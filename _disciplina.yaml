@@ -1,0 +1,18 @@
+professor: 
+    nome: "Nome do professor"
+    email: "prof@uni.edu.br"
+
+disciplina:
+  nome: "Nome da disciplina"
+  codigo: "Código"
+  semestre: "1"
+  ano: "2024"
+  
+  planoDeAulas:
+    - titulo: "Introdução ao MDX"
+      path: "01_aula-introducao.mdx"
+
+    - titulo: "Exemplo de escrita em MDX"
+      path: "02_como-escrever.mdx"
+
+   

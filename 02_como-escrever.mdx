@@ -1,0 +1,250 @@
+# Briefing
+
+Como dito, o MDX é uma mistura de Markdown e JSX. Então, é possivel escrever seus documentos (como este daqui que vos fala) utilizando uma mistura das sintaxes de JSX e Markdown. 
+
+
+# Cabeçalhos
+
+Como já deve ter notado, cabeçalhos são feitos utilizando o hashtag. Há três níveis.
+
+Exemplo: 
+
+\# Heading 1
+
+\#\# Heading 2
+
+\#\#\# Heading 3
+
+Note que os exemplos não se tornaram headers de fato pois o hashtag foi escapado com o uso da "\\". Você pode fazer isso para qualquer escapar qualque caractere especial.
+
+
+# Texto comum
+
+Apenas digite normalmente.
+
+ou...
+
+<p> Você também pode escrever o conteúdo utilizando tags JSX </p>
+
+
+## Modificadores
+
+Para itálico é *assim* ou _assim_.
+
+Para bold é **assim** ou __assim__.
+
+
+
+# Links
+
+[Isto é uma maneira de inserir link](https://http.cat/204)
+
+Há também uma maneira onde chama-se o link e pode-se definí-lo depois:
+
+[Link 1][1]
+
+[1]: https://http.cat/204
+
+
+# Imagens
+
+Imagens são adicionadas passando seu path, seja online ou local.
+
+## Imagens da web
+
+Imagens da web podem ser adicionadas apenas indicando o seu URL completo:
+
+![](https://http.cat/images/102.jpg)
+
+## Imagens locais
+
+Imagens locais devem ser referenciadas com um path relativo a este arquivo .mdx que a invoca (i.e., 02_como-escrever.mdx no nosso caso). Dê preferência por inserí-las em sub-pastas.
+
+![](./assets/img01.jpg)
+
+
+
+# Block quote
+
+Para block quotes, faça:
+
+> "*A leader must write clearly and beautifully. He must be the very best in all things.*" - Yoshii Toranaga
+
+
+# Listas bullet
+
+Há duas maneiras de se fazer listas.
+
+Fui a feira ontem e comprei:
+- pão;
+- queijo;
+- banana;
+- todinho.
+- leite em pó.
+
+Amanha vou comprar na feira:
+* abacate;
+* ovos;
+* maçã;
+* morango.
+
+
+# Listas numeradas
+
+Também há duas maneiras.
+
+Os primeiros números naturais são:
+1. zero;
+2. um; 
+3. dois;
+4. três.
+
+Os primeiros anos do milênio atual (escrevo em 26/09/2024, favor atualizar no próximo milênio) foram:
+1) 2001
+2) 2002
+3) 2003
+4) 2004
+
+
+# Linha horizontal
+
+Uma linha horizontal pode ser desenhada assim
+
+***
+
+ou assim
+
+---
+
+
+# Códigos
+
+Pode-se adicionar um inline code: `int a = 10;`.
+
+Um código destacado em bloco também pode ser inserido:
+
+```js
+import React, { useEffect, useState } from 'react'; import React, { useEffect, useState } from 'react'; import React, { useEffect, useState } from 'react';
+import { MDXProvider } from '@mdx-js/react';
+import { compile, run } from '@mdx-js/mdx';
+import * as runtime from 'react/jsx-runtime'
+
+const foo = () => {
+    int a = 10;
+    int b = 20;
+    return a + b;
+}
+```
+
+
+# E aí?
+
+OK, até então estilizamos o conteúdo usando somente a sintaxe de *Markdown*. Porém, aqui estamos em um ambiente mais poderoso, o **Markdown Extended**!!!
+
+Em um nível básico, podemos também estilizar os componentes através de tags JSX:
+
+<p>Este é um texto comum usando tag JSX.</p>
+
+Esta é uma lista usando JSX:
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>**Item 3** (no que pode-se misturar os dois!)</li>
+</ul>
+
+E por aí vai. 
+
+Naturalmente, prefira estilizar o básico usando as tags de Markdown. O poder aqui está realmente em poder usar códigos javascript, definir e usar componentes, importar classes css, etc., tudo misturado com o Markdown!!!
+
+
+# Expressões
+
+Pode-se usar expressões em JS dentro de \{ \<expressão \>\}:
+
+- 90 graus = {Math.PI / 2} radianos.
+- 180 graus = {Math.PI} radianos.
+- 270 graus = {3*Math.PI/2} radianos.
+- 360 graus = {2*Math.PI} radianos.
+
+Você pode escrever literalmente qualquer coisa em JS, desde que esteja dentro de \{\<code\>\}, e que seja uma função que retorna algo renderizável:
+
+Abaixo está uma função que renderiza um texto diferente de acordo com um valor sorteado aleatoriamente.
+
+{ (function () {
+        const chute = Math.random()
+
+        if (chute > 0.66) {
+            return <span style={{color: 'tomato'}}> Olha aqui! </span>
+        }
+
+        if (chute > 0.3) {
+            return <span style={{color: 'violet'}}> Quem teria adivinhado!? </span>
+        }
+
+        return <span style={{color: 'goldenrod'}}> Não sou eu. </span>
+    })
+()}
+
+
+# Importando 
+
+É possível importar componentes e módulos normalmente:
+
+export const Local = properties => <p style={{color: 'green'}}> Eu sou um componente importado localmente </p>
+
+<Local />
+
+
+
+# Matemática
+
+Através de um plugin habilitado, é possível escrever equações em Latex dentro de ambientes matemáticos como se estivesse realmente no próprio latex: `$ <equação> $`.
+
+Para escrever uma equação inline: $c = 2 \pi r$.
+
+
+Também é possível escrever uma equação em nova linha:
+$$
+c = \int_a^b x^2 dx
+$$
+
+Se precisar, pode expandir as funcionalidades deste ambiente matemático utilizando o [remark-mdx-math-enhanced](https://github.com/goodproblems/remark-mdx-math-enhanced).
+
+
+
+# Github Flavored Markdown
+
+Há um plugin habilitado que permite adicionar também notações de Github Falored Markdown (GFM), que basicamente extende a sintaxe Markdown original.
+
+## Autolinks
+
+É possível gerar links apenas escrevendo eles, como em https://ufsj.edu.br/detem/.
+
+
+## Nota de rodapé
+
+Pode-se adicionar uma nota de rodapé[^1], que irá aparecer ao final do documento. Esta e uma mão na roda para acrescentar revisões bibliográficas ao documento.
+
+[^1]: Veja esta nota de rodapé que foi adicionada.
+
+
+## Strikethrough
+
+É possível ~~rabiscar um texto~~ caso queira demonstrar algo que foi alterado em uma seção, por exemplo.
+
+
+## Tabelas
+
+Pode-se criar tabelas da seguinte maneira:
+
+| a | b  |  c |  d  |
+| - | :- | -: | :-: |
+
+
+## Listas de tarefas
+
+O que fazer para começar a usar MDX?
+
+* [x] Ler e entender este tutorial.
+* [ ] Baixar e configurar o tela-class 
+* [ ] Começar a escrever seu próprio conteúdo.
